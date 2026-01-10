@@ -53,19 +53,32 @@
     <form>
         <input type="number" placeholder="Primeiro número" id="n1">
         <input type="number" placeholder="Segundo número" id="n2">
+        <input type="text" placeholder="Seu operado,exemplo +,/ etc" id="operador">
         <button type="button" onclick="calcular()">Calcular Soma</button>
         <p id="resposta"></p>
     </form>
     <script>
         let p = document.getElementById('resposta')
         function calcular(){
+            const operador = document.getElementById('operador').value
             const n1 = Number(document.getElementById('n1').value)
             const n2 = Number(document.getElementById('n2').value)
-            const resposta = n1 + n2
-            if (document.getElementById('n1').value === '' || document.getElementById('n2').value === ''){
+            let  resposta = n1 + n2
+            if (document.getElementById('n1').value === '' || document.getElementById('n2').value === '' || document.getElementById('operador').value === ''){
                 p.textContent='Prencha todos os campos'
             }else{
-                p.textContent='Seu resultado é '+resposta
+                if (operador === '+'){
+                    p.textContent='Sua resposta é:'+resposta
+                }else if(operador === '-'){
+                    resposta = n1 - n2
+                    p.textContent='Sua resposta é:'+resposta
+                }else if (operador === '/'){
+                    resposta = n1 / n2
+                    p.textContent='Sua resposta é:'+resposta
+                }else if(operador === '*'){
+                    resposta = n1 * n2
+                    p.textContent='Sua resposta é:'+resposta
+                }
             }
         }
     </script>
