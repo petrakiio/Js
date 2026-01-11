@@ -1,8 +1,8 @@
 //mini lista de tarefas
 
 function adicionarTarefa(){
-    let input = document.getElementById('input-tarefa')
-    let tarefa = input.value
+    const input = document.getElementById('input-tarefa')
+    const tarefa = input.value
     
     if (tarefa === ''){
         document.getElementById('mensagem').textContent='Tarefa vazia,erro ao adicionar'
