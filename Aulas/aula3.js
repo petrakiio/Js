@@ -27,5 +27,6 @@ function adicionarTarefa(){
 //função pra limpar lista
 function limpar(){
     const Listatarefas = document.getElementById('listaTarefas')
+    //limpa tudo
     Listatarefas.innerHTML=''
 }
