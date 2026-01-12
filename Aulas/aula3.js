@@ -11,10 +11,9 @@ function adicionarTarefa(){
     }else{
         paragrafo.textContent='Tarefa Adicionada:'+tarefa
         paragrafo.className='coreto'
-        let Listatarefas = document.getElementById('listaTarefas')
+        const Listatarefas = document.getElementById('listaTarefas')
         //cria elemento li
-        let novaTarefa = document.createElement('li')
-        
+        const novaTarefa = document.createElement('li')
         //Adicionando valor do input
         novaTarefa.textContent=tarefa
 
@@ -23,4 +22,10 @@ function adicionarTarefa(){
 
         tarefa.value = ''
     }
+}
+
+//função pra limpar lista
+function limpar(){
+    const Listatarefas = document.getElementById('listaTarefas')
+    Listatarefas.innerHTML=''
 }
