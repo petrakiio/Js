@@ -1,6 +1,4 @@
-
 const btnt = document.getElementById('adcTarefa')
-const btnL = document.getElementById('limpar')
 const mensagem = document.getElementById("mensagem")
 let tarefas = []
 
@@ -43,23 +41,36 @@ function renderizarTarefas() {
         editorbtn.textContent='Editar'
         editorbtn.className='editar'
         editorbtn.onclick = () => editartarefa(i)
+
         novaTarefa.appendChild(editorbtn)
         listaTarefas.appendChild(novaTarefa)
     }
+    if (tarefas.length === 3){
+            criarbtn()
+        }
 }
 
-btnL.addEventListener('click', () =>{
-    if (tarefas.length === 0){
-        mensagem.textContent='Você não pode apagar algo vazio'
-        mensagem.className='erro'
-    }else{
-        tarefas.length = 0
-        mensagem.textContent='Lista esvaziada'
-        mensagem.className='pass'
-        renderizarTarefas()
-    }
-})
+function criarbtn(){
+    //evita botões duplicados
+    if (document.querySelector('.botao_lista')) return;
 
+    const btnL = document.createElement('button')
+    btnL.textContent='Esvaziar lixeira'
+    btnL.onclick = () => esvaziar()
+    btnL.className='botao_lista'
+
+    //adicionar no .container
+    document.querySelector('.container').appendChild(btnL)
+}
+
+function esvaziar(){
+    tarefas.length = 0
+    mensagem.textContent='Lista limpa'
+    mensagem.className='pass'
+    const btn = document.querySelector('.botao_lista')
+    if (tarefas.length === 0) btn.remove() 
+    renderizarTarefas()
+}
 
 function removertarefa(indice){
     tarefas.splice(indice, 1)
