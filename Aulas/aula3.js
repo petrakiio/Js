@@ -1,32 +1,28 @@
-//mini lista de tarefas
+//mini lista de tarefas 
+const btnTarefa = document.getElementById('adcTarefa')
+const btnLimpar = document.getElementById('limpar')
 
-function adicionarTarefa(){
-    const input = document.getElementById('input-tarefa')
-    const tarefa = input.value
-    const paragrafo = document.getElementById('mensagem')
-    if (tarefa === ''){
-        paragrafo.textContent='Erro,Não é possivel adicionar uma tarefa vazia'
-        paragrafo.className='erro'
-        
-    }else{
-        paragrafo.textContent='Tarefa Adicionada:'+tarefa
-        paragrafo.className='coreto'
-        const Listatarefas = document.getElementById('listaTarefas')
-        //cria elemento li
-        const novaTarefa = document.createElement('li')
-        //Adicionando valor do input
-        novaTarefa.textContent=tarefa
+btnTarefa.addEventListener('click', () =>{
+        const inputTarefa = document.getElementById("inputTarefa")
+        let tarefa = inputTarefa.value.trim()
+        const mensagem = document.getElementById("mensagem")
 
-        //Adiciona como filho
-        Listatarefas.appendChild(novaTarefa)
+        if (tarefa == "") {
+            mensagem.textContent = "Digite uma tarefa!";
+        } else {
+            mensagem.textContent = "Tarefa adicionada com sucesso!"
+            renderizar(tarefa);
+        }
+        inputTarefa.value = ""
+})
 
-        tarefa.value = ''
-    }
+function renderizar(textoDaTarefa) {
+    const listaTarefas = document.getElementById("listaTarefas")
+    let novaTarefa = document.createElement("li")
+    novaTarefa.textContent = textoDaTarefa
+    listaTarefas.appendChild(novaTarefa)
 }
 
-//função pra limpar lista
-function limpar(){
-    const Listatarefas = document.getElementById('listaTarefas')
-    //limpa tudo
-    Listatarefas.innerHTML=''
-}
+btnLimpar.addEventListener('click', () => {
+    
+})
